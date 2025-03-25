@@ -1,19 +1,37 @@
-#include <queue>
-#include <utility>
 #include <iostream>
+using namespace std;
 
 class node{
     public:
-    int val;
     node* next;
-    node(int val){
-        this -> val = val;
-        this -> next = nullptr;
+    node* prev;
+    int data;
+
+    node(int val): next(nullptr), prev(nullptr), data(val){}
+};
+
+class dll{
+    public:
+    node* head;
+    dll(){
+        head = nullptr;
+    }
+
+    void add(int val){
+        node* n = new node(val);
+        if(head==nullptr){
+            head = n;
+            return;
+        }
+        node* temp = head;
+        while(temp->next!=nullptr){
+            temp = temp->next;
+        }
+        n = temp -> next;
+        temp = n -> prev;
     }
 };
-void insertNode(node* node1){
-    
-}
+
 int main(){
-    node* node1 = new node(5);
+
 }
