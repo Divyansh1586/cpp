@@ -1,0 +1,68 @@
+Build a backend for an Attendance Tracking App using Node.js, Express, and MongoDB.
+
+Roles and Authentication:
+Implement separate login systems (using JWT) for the following user roles:
+
+Admin
+
+Teacher
+
+Student (students don’t log in, they just view attendance by inputting name or roll number)
+
+Features by Role:
+🛠️ Admin:
+Add/view/edit/delete:
+
+Teachers
+
+Students
+
+Classes
+
+Upload teacher/student data via CSV 
+
+Assign students to classes
+
+Assign teachers to classes
+
+Mark attendance for students in any class (present/absent per date)
+
+View all attendance data
+
+🧑‍🏫 Teacher:
+Can only mark attendance for students in the classes assigned to them
+
+Can view attendance records of their classes
+
+👨‍🎓 Student:
+No login required
+
+Can view their own attendance by entering either:
+
+Name
+
+Roll Number
+
+Additional Notes:
+Each class contains multiple students.
+
+Attendance should be tracked by date per student, per class.
+
+Use MongoDB models for:
+
+Users (with role-based permissions)
+
+Students
+
+Teachers
+
+Classes
+
+Attendance (date, studentId, classId, status)
+
+Optional Enhancements:
+Pagination and filtering for attendance records
+
+Rate limiting for student view to prevent scraping
+
+Export attendance to CSV
