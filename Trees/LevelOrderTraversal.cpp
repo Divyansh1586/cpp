@@ -1,5 +1,6 @@
 #include <iostream>
 #include <queue>
+#include <vector>
 using namespace std;
 
 // Definition for a binary tree node.
@@ -55,21 +56,52 @@ void preorder(TreeNode* root) {
     preorder(root->right);
 }
 
+vector <vector<int>> res;
+int mx = 0;
+
+int paths(TreeNode* root, vector <int> temp){
+    if(!root) return 0;
+    temp.push_back(root->val);
+    if(!root->left && !root->right) res.push_back(temp);
+    int left = paths(root->left, temp);
+    int right = paths(root->right, temp);
+
+    mx = max(left, right); 
+
+    return 1 + max(left, right);
+}
+
+
+
 int main() {
     vector<int> input;
     int x;
-
+    int n;
+    cin >> n;
     // Reading input until EOF
-    while (cin >> x) {
+    while (n--) {
+        cin >> x;
         input.push_back(x);
     }
 
     TreeNode* root = buildTreeFromLevelOrder(input);
 
     // Verify with preorder traversal
-    cout << "Preorder Traversal: ";
-    preorder(root);
-    cout << endl;
+    // cout << "Preorder Traversal: ";
+    // preorder(root);
+    // cout << endl;
+    vector <int> temp;
+    paths(root, temp);
+    for(int i = 0; i < res.size(); i++){
+        
+        //if(mx + 1 ==  res[i].size()){
+            for(int j = 0; j < res[i].size(); j++){
+                cout << res[i][j] << " ";
+            }
+            cout << '\n';
+       // }
+        
+    }
 
     return 0;
 }
